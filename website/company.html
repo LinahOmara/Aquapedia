@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assetsmain/images/icon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Aquapedia</title>
+    
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="assets/css/my.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
+    <!-- Extra Links 3n el tte-->
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" media="all" href="jquery.progressbar.css" />
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="index.html" class="simple-text">
+                Aquapedia
+            </a>
+        </div>
+
+        <ul class="nav">
+            <li class="active">
+                <a href="dashboard.html">
+                    <i class="pe-7s-graph"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            <li>
+                <a href="user.html">
+                  <i class="pe-7s-user"></i>
+                  <p>Add new user</p>
+              </a>
+          </li>
+        </ul>
+    </div>
+</div>
+
+<div class="main-panel">
+    <nav class="navbar navbar-default navbar-fixed">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Dashboard</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-dashboard"></i>
+                            <p class="hidden-lg hidden-md">Dashboard</p>
+                        </a>
+                    </li>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.html">
+        <p>Log out</p>
+    </a>
+</li>
+<li class="separator hidden-lg hidden-md"></li>
+</ul>
+</div>
+</div>
+</nav>
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title ">Active Users</h4>
+                        <p class="category">till 2017</p> 
+                        <h3 class="pe-7s-users" id = "users"> 1000 users.</h3>
+
+                    </div>
+                    <hr>
+                </div>
+                <!-- _________________________________________________________Alerts _________________________________________ -->
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Geographic Statistics</h4>
+                        <p class="category">Consumption of each district</p>
+                    </div>
+                    <div class="content">
+                        <canvas id="GeographicChart"  ></canvas>
+
+                        <div class="footer">
+                            <hr>
+                            <div class="stats">
+                                <i class="fa fa-clock-o"></i> Based on June analysis
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- _________________________________________________________ Analysis chart _________________________________________ -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="collapse navbar-collapse">
+                        <div class="header">
+                            <ul class="nav navbar-nav navbar-left">
+                                <h4 class="title">Users Consumption Analysis</h4>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                      <!-- <span id="selectedAnalysisPlace">Year</span><span class="caret"></span> -->
+                                      <p id="selectedAnalysisPlace">
+                                        Place
+                                        <b class="caret"></b>
+                                    </p> 
+                                </a>
+                                <ul  id = "PlaceOfAnalysisChart" class="dropdown-menu">
+                                    <li><a  >Cairo</a></li>
+                                    <li><a  >Giza</a></li>
+                                    <li><a  >Alex</a></li>
+                                    <li><a  >Tanta</a></li>
+                                    <li class="divider"></li>
+                                    <li><a  >All</a></li>
+                                </ul>
+                            </li> 
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                  <p id="selectedAnalysisYear">
+                                    Year
+                                    <b class="caret"></b>
+                                </p>
+                            </a>
+                            <ul id = "YearOfAnalysisChart" class="dropdown-menu">
+                                <li><a  >2013</a></li>
+                                <li><a  >2014</a></li>
+                                <li><a  >2015</a></li>
+                            </ul>
+
+                        </li> 
+                    </ul>
+                </div>
+            </div> 
+            <div class="col-md-3">
+                <div class="form-group">
+
+                </div>
+            </div>
+
+            <canvas id="AnalysisChart" height="200"></canvas>
+            <div class="collapse navbar-collapse">
+                <div class="footer">
+                    <hr>
+                    <ul class="nav navbar-nav navbar-left">
+                        <div class="stats">
+                            <i class="fa fa-history"></i> Last Updated at --:-- --
+                        </div>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <div class="col-md-9">  
+                            <button type="submit" onclick="drawAnalysisChart()  " class="btn btn-info btn-fill pull-right">Submit</button>
+                        </div> </ul>
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- _________________________________________________________ Geographic use chart _________________________________________ -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card ">
+                    <div class="header">
+                        <h4 class="title " class="pe-7s-speaker"> Alerts </h4>
+                        <h5   class="pe-7s-speaker"> Abnormal behaviours </h5>
+                    </div>
+                    <hr>
+                    <div class="content">
+
+                        <h5 id = "alerts" > </h5>
+
+                    </div>
+                </div>
+            </div>
+            <!-- _________________________________________________________ Prediction chart _________________________________________ -->
+            <div class="col-md-8">
+                <div class="card ">
+                    <div class="header">
+                        <h4 class="title">Users Behavior Prediction</h4>
+                        <p class="category">Future predicted consumption</p>
+                    </div>
+                    <div class="content">
+                        <li class="dropdown nav navbar-nav navbar-left">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <p id ="Showplace">
+                             Place
+                             <b class="caret"></b>
+                         </p>
+                     </a>
+                     <ul id="predictPlace" class="dropdown-menu">
+                        <li><a  >Cairo</a></li>
+                        <li><a  >Giza</a></li>
+                        <li><a  >Tanta</a></li>
+                        <li><a  >Alex</a></li>
+                        <li class="divider"></li>
+                        <li><a  >All</a></li>
+
+                    </ul>
+                </li>
+                <canvas id="PredictedChart"></canvas>
+            </div>
+
+            <br>
+            <div class="footer">
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-history"></i>Last Updated at --:-- --
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+</body>
+
+
+<!--   Core JS Files   -->
+<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-3.1.0.slim.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="jquery.progressbar.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
+
+<!--  Charts Plugin -->
+<script src="assets/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="assets/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="assets/js/light-bootstrap-dashboard.js"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="assets/js/demo.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" />
+
+
+
+<script type="text/javascript">
+   $(document).ready(function(){
+
+       demo.initChartist();
+
+       $.notify({
+           icon: 'pe-7s-gift',
+           message: "Welcome to <b>Aquapedia</b> - a beautiful service designed just for <b>YOU</b>."
+
+       },{
+        type: 'info',
+        timer: 4000
+    });
+
+   });
+</script>
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+</script>
+
+
+
+<script type="text/javascript">
+
+    ////////// Declare Variable /////////////////
+    var analysis_place_use= new Array();
+    var analysis_place_position;
+    var analysis_place_data = new Array();
+    var currunt_year    = 2013;
+    var currunt_place   = "Alex";
+    /////////// Connection GET /////////////////
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://127.0.0.1:8000/analysis/", false); // false for synchronous request
+    xmlHttp.send();
+    var analysis_response    = JSON.parse(xmlHttp.responseText);
+    console.log(analysis_response);
+    console.log(analysis_response.length);
+///////////////// Save Data /////////////////
+    //-----------Create 2D array-------------
+    var analysis_response_data = new Array(4);
+
+    for (var i = 0; i < 4;   i++) {
+      analysis_response_data[i] = new Array();
+    }
+
+
+  var analysis_data = {
+    labels: ["January", "February", "March", "April", "May", "June", "July","August","Septmber","October","November","December"],
+    datasets: [{
+        label: "Choose a Place and Time",
+        fill: false,
+        backgroundColor: '#4AD2EE',
+        borderColor: '#4AD2EE',
+        data: [60, 100, 70, 80, 70, 100, 120, 45, 90, 72, 10, 97]
+    }]
+};
+
+var ctx = $("#AnalysisChart").get(0).getContext("2d");
+var myanalysis_Chart = new Chart(ctx, {
+    type: "line",
+    data: analysis_data,
+});
+
+$('#YearOfAnalysisChart li').on('click', function(){
+    currunt_year = $(this).text();
+    $('#selectedAnalysisYear').text(currunt_year);
+
+});
+
+$('#PlaceOfAnalysisChart li').on('click', function(){
+    for (var i = 0 ; i <  4 ; i ++){
+        for ( var j = 0 ; j < 12 ; j ++){ 
+         analysis_response_data[i].pop();
+        }
+    }
+    var place_index=0;
+    currunt_place = $(this).text();
+    $('#selectedAnalysisPlace').text(currunt_place);
+     ////// code to handle selection of All ////////
+      //------- Copy data from Json OBJ to the 2D array ------  
+      for ( var i = 0 ; i < analysis_response.length ; i ++){
+        if ( analysis_response[i].year == currunt_year){
+
+           for ( var j = 0 ; j < 12 ; j ++){  
+            analysis_response_data[place_index].push( analysis_response[i].use[j]);      
+        }
+    place_index++;
+}
+}
+
+
+});
+
+function drawAnalysisChart(){
+    // remove currunt data on chart
+    for (var i = 0 ; i < 12 ; i ++){
+     analysis_place_use.pop();
+    }
+
+    for ( var i = 0 ; i < analysis_response.length ; i ++){      
+     if (analysis_response[i].place == currunt_place && analysis_response[i].year == currunt_year){
+      //  analysis_place_use       = analysis_response[i].use;
+      for ( var k = 0 ; k < 12 ; k ++){  
+        analysis_place_use.push( analysis_response[i].use[k]);      
+    }     
+} 
+}
+    // remove currunt data on chart
+    var analysis_len = analysis_data.datasets.length;
+    for (var i = 0 ; i < analysis_len ; i ++){
+     analysis_data.datasets.pop();
+    }
+     // update chart
+     if (currunt_place != "All"){  
+     // new dataset
+     var analysis_newDataset = {
+        label: currunt_place,
+        backgroundColor: '#D85D6C',
+        borderColor: '#D85D6C',
+        borderWidth: 1,
+        fill : false,
+        data: analysis_place_use,
+    }
+
+    analysis_data.datasets.push(analysis_newDataset);
+    myanalysis_Chart.update();
+}else {
+         // new dataset
+         var analysis_CairoDataset = {
+            label: "Cairo", 
+            fill: false,
+            backgroundColor: '#4AD2EE',
+            borderColor: '#4AD2EE',
+            borderWidth: 1,
+            data: analysis_response_data[0],
+        }
+        var analysis_GizaDataset = {
+            label: "Giza",
+            fill: false,
+            backgroundColor: '#F7973F',
+            borderColor: '#F7973F',
+            data: analysis_response_data[1],
+        }
+        var analysis_TantaDataset = {
+            label: "Tanta",
+            fill: false,
+            backgroundColor: '#D85D6C',
+            borderColor: '#D85D6C',
+            data: analysis_response_data[2],
+        }
+        var analysis_AlexDataset = {
+            label: "Alex",
+            fill: false,
+            backgroundColor: '#FFCE56',
+            borderColor: '#FFCE56',
+            data: analysis_response_data[3],
+        }
+
+        analysis_data.datasets.push(analysis_CairoDataset);
+        analysis_data.datasets.push(analysis_GizaDataset);
+        analysis_data.datasets.push(analysis_TantaDataset);
+        analysis_data.datasets.push(analysis_AlexDataset);
+        myanalysis_Chart.update();
+
+    }
+} 
+
+</script>
+
+<script type="text/javascript"> 
+    ////////// Declare Variable /////////////////
+    var place_use;
+    var new_place_use;
+    var place_position;
+    var predict_selected_data = new Array();
+    /////////// Connection GET /////////////////
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "http://127.0.0.1:8000/predict/", false); // false for synchronous request
+    xmlHttp.send();
+    var response    = JSON.parse(xmlHttp.responseText);
+    ///////////////// Save Data /////////////////
+    //-----------Create 2D array-------------
+    var predict_response_data = new Array(4);
+
+    for (var i = 0; i < 4; i++) {
+      predict_response_data[i] = new Array();
+  }
+  //------- Copy data from Json OBJ to the 2D array ------
+
+  for ( var i = 0 ; i < response.length ; i ++){
+    place_use       = response[i].use;       
+   // console.log(new_place_use);
+   for ( var j = 0 ; j < 12 ; j ++){  
+    predict_response_data[i].push( place_use[j]);      
+}
+}
+
+var data = {
+    labels: ["12:00-2:00", "2:00-4:00", "4-6:00", "6:00-8:00", "8:00-10:00", "10:00-12:00" , "12:00-14:00" , "14:00-16:00" , "16:00-18:00" , "18:00-20:00" , "20:00-22:00", "22:00-24:00"],
+    datasets: [{
+        label: "Choose a Place",
+        fill: true,
+        backgroundColor: '#4AD2EE',
+        borderColor: '#4AD2EE',
+        data: [60, 100, 70, 80, 70, 100, 120, 45, 90, 72, 10, 97]
+    }]
+};
+
+var ctx = $("#PredictedChart").get(0).getContext("2d");
+var myBarChart = new Chart(ctx, {
+    type: "bar",
+    data: data,
+        // Configuration options go here
+    options: {
+        scales: {
+            xAxes: [{
+                ticks: {
+                    min: 0 // Edit the value according to what you need
+                }
+            }],
+            yAxes: [{
+                stacked: false
+            }]
+        }
+    }
+});
+
+
+$('#predictPlace li a').on('click', function(){
+    $('#Showplace').text($(this).text());
+    var selected_place = $(this).text();
+    for ( var i = 0 ; i < response.length ; i ++){
+        if (response[i].place == selected_place){
+            place_use       = response[i].use;       
+        } 
+    }
+
+    for ( var i = 0 ; i < 12 ; i ++){  
+        predict_selected_data.push( place_use[i]);      
+    }
+
+    
+    // remove currunt data on chart
+    var len = data.datasets.length;
+    for (var i = 0 ; i < len ; i ++){
+     data.datasets.pop();
+ }
+     // update chart
+     if (selected_place != "All"){  
+     // new dataset
+     var newDataset = {
+        label: selected_place,
+        backgroundColor: '#D85D6C',
+        borderColor: '#D85D6C',
+        borderWidth: 1,
+        data: predict_selected_data,
+    }
+
+    data.datasets.push(newDataset);
+    myBarChart.update();
+}else {
+        // new dataset
+        var CairoDataset = {
+            label: "Cairo",
+            fill: true,
+            backgroundColor: '#4AD2EE',
+            borderColor: '#4AD2EE',
+            borderWidth: 1,
+            data: predict_response_data[0],
+        }
+        var GizaDataset = {
+            label: "Giza",
+            fill: true,
+            backgroundColor: '#F7973F',
+            borderColor: '#F7973F',
+            data: predict_response_data[1],
+        }
+        var TantaDataset = {
+            label: "Tanta",
+            fill: true,
+            backgroundColor: '#D85D6C',
+            borderColor: '#D85D6C',
+            data: predict_response_data[2],
+        }
+        var AlexDataset = {
+            label: "Alex",
+            fill: true,
+            backgroundColor: '#FFCE56',
+            borderColor: '#FFCE56',
+            data: predict_response_data[3],
+        }
+
+        data.datasets.push(CairoDataset);
+        data.datasets.push(GizaDataset);
+        data.datasets.push(TantaDataset);
+        data.datasets.push(AlexDataset);
+        myBarChart.update();
+    }
+});
+
+</script>
+
+<script type="text/javascript">
+
+
+    var xmlHttp = new XMLHttpRequest();
+
+        xmlHttp.open( "GET", "http://127.0.0.1:8000/geographic/", false); // false for synchronous request
+        xmlHttp.send();
+        var response = JSON.parse(xmlHttp.responseText);
+        /*console.log(response);
+        console.log(response.length);*/
+        var geo_label_data    = new Array();
+        var geo_response_data = new Array();
+
+        for ( var i = 0 ; i < response.length ; i ++){ 
+            geo_label_data.push(response[i].place); 
+            geo_response_data.push( response[i].use); 
+            
+        } 
+
+        var ctx = document.getElementById('GeographicChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'doughnut',
+            data : {
+                datasets: [{
+                    data: geo_response_data,
+                    backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                    ],
+                    hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                    ]
+                }],
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: geo_label_data,
+    backgroundColor: [
+    "#FF6384",
+    "#36A2EB",
+    "#FFCE56"
+    ],
+    hoverBackgroundColor: [
+    "#FF6384",
+    "#36A2EB",
+    "#FFCE56"
+    ]
+},
+options: {}
+}); 
+</script>
+
+
+<script type="text/javascript">
+    var xmlHttp = new XMLHttpRequest();
+
+        xmlHttp.open( "GET", "http://127.0.0.1:8000/users_count/", false); // false for synchronous request
+        xmlHttp.send(); 
+        var response = JSON.parse(xmlHttp.responseText);
+        document.getElementById('users').innerHTML = " "+response.users+ " users.";
+        
+    </script>
+
+    <script type="text/javascript">
+        var xmlHttp = new XMLHttpRequest();
+
+        xmlHttp.open( "GET", "http://127.0.0.1:8000/alerts/", false); // false for synchronous request
+        xmlHttp.send();
+        var response = JSON.parse(xmlHttp.responseText);
+        for ( var i = 0 ; i < response.length ; i ++){
+            document.getElementById('alerts').innerHTML += "Customer "+response[i].user_id + " : "+ response[i].alerts+" <br>";
+
+        }
+        
+    </script>
+    </html>
